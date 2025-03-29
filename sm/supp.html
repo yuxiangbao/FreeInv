@@ -1,0 +1,377 @@
+<link href="https://fonts.cdnfonts.com/css/chalkduster" rel="stylesheet">
+<style>
+    @import url('https://fonts.cdnfonts.com/css/chalkduster');
+</style>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>FreeInv: Free-Lunch DDIM Inversion</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<button style="position: fixed;right: 15px;top:  50%;height: 100px;width: 140px; font-size: 20px;" type="button"><a href="#top">Back to top</a></button> 
+<div class="page-container">
+  <h1 align="center">FreeInv: Free-Lunch DDIM Inversion</h1>
+  <h2 align="center">Video Results</h2>
+  <p align="center">&nbsp;</p>
+	<a href="#top"></a>
+  <ul>
+	<li><a href="#our_results_container">Our Results</a></li>
+  <!-- <li><a href="#our_results_pp_container">Our Results combined with post-process deflickering</a></li> -->
+  <!-- <li><a href="#our_results_others_container">Results of our method with a different image-editing technique</a></li> -->
+	<li><a href="#comparisons_baselines_container">Comparisons to Baselines</a></li>
+	<li><a href="#ddim_inversion_container">DDIM Inversion Comparison</a></li>
+    <!-- <li><a href="#additional_qual_comp">Additional Qualitative Comparisons</a></li> -->
+    <!-- <li><a href="#Ablations">Ablations</a></li> -->
+    <!-- <li><a href="#pca">Diffusion Features PCA Visualizations</a></li> -->
+  </ul>
+  <hr>
+  <h2 id="our_results_container" align="left"><a name="image-results" id="image-results"></a>Our Results</h2>
+  <p align="left"> We present sample results of our method.
+
+    <table  width="800" align="center">
+      <tr>
+      <tr>
+        <th style="font-size: 16px">Input</th>
+        <th style="font-family: Chalkduster">"Lionel Messi is talking"</th>
+        <th style="font-family: Chalkduster">"LeBron James is talking" </th>
+        <th style="font-family: Chalkduster">"Will Smith is talking" </th>
+        <!-- <th style="font-size: 16px">TokenFlow (<a href="#ref-tokenflow">[3]</a>)</th> -->
+        </tr>
+        <hr>
+     
+      <tr>
+          <th><a href="assets/man_talking/input_fps20.mp4"> <a href="assets/man_talking/input_fps20.mp4"> <video  width="224" src="assets/man_talking/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+          <th><a href="assets/man_talking/Messi.mp4"> <a href="assets/man_talking/Messi.mp4"> <video width="224"  src="assets/man_talking/Messi.mp4" autoplay loop controls muted /> </a> </a></th>
+          <th><a href="assets/man_talking/James.mp4"> <a href="assets/man_talking/James.mp4"> <video  width="224" src="assets/man_talking/James.mp4" autoplay loop controls muted/> </a> </a></th>
+          <th><a href="assets/man_talking/Will_Smith.mp4"> <a href="assets/man_talking/Will_Smith.mp4"> <video  width="224"  src="assets/man_talking/Will_Smith.mp4" autoplay loop controls muted/> </a> </a></th>
+        </tr>
+        
+      </table>
+      <table  width="800" align="center">
+        <tr>
+        <tr>
+          <th style="font-size: 16px">Input</th>
+          <th style="font-family: Chalkduster">"Pixar Animation"</th>
+          <th style="font-family: Chalkduster">"A Tiger" </th>
+          <th style="font-family: Chalkduster">"An Orange Cat" </th>
+          <!-- <th style="font-size: 16px">TokenFlow (<a href="#ref-tokenflow">[3]</a>)</th> -->
+          </tr>
+          <hr>
+       
+        <tr>
+            <th><a href="assets/cat/input_fps20.mp4"> <a href="assets/cat/input_fps20.mp4"> <video  width="224" src="assets/cat/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+            <th><a href="assets/cat/pixar.mp4"> <a href="assets/cat/pixar.mp4"> <video width="224"  src="assets/cat/pixar.mp4" autoplay loop controls muted /> </a> </a></th>
+            <th><a href="assets/cat/tiger.mp4"> <a href="assets/cat/tiger.mp4"> <video  width="224" src="assets/cat/tiger.mp4" autoplay loop controls muted/> </a> </a></th>
+            <th><a href="assets/cat/orange_cat.mp4"> <a href="assets/cat/orange_cat.mp4"> <video  width="224"  src="assets/cat/orange_cat.mp4" autoplay loop controls muted/> </a> </a></th>
+          </tr>
+          
+        </table>
+      <table  width="800" align="center">
+        <tr>
+        <tr>
+          <th style="font-size: 16px">Input</th>
+          <th style="font-family: Chalkduster">"8-bit pixel art" </th>
+          <th style="font-family: Chalkduster">"A marble sculpture is running"</th>
+          <th style="font-family: Chalkduster">"Pixar animation" </th>
+          <!-- <th style="font-size: 16px">TokenFlow (<a href="#ref-tokenflow">[3]</a>)</th> -->
+          </tr>
+          <hr>
+       
+        <tr>
+            <th><a href="assets/woman-running/input_fps20.mp4"> <a href="assets/woman-running/input_fps20.mp4"> <video  width="224" src="assets/woman-running/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+            <th><a href="assets/woman-running/8-bit.mp4"> <a href="assets/woman-running/8-bit.mp4"> <video  width="224" src="assets/woman-running/8-bit.mp4" autoplay loop controls muted/> </a> </a></th>
+            <th><a href="assets/woman-running/marble_sculpture.mp4"> <a href="assets/woman-running/marble_sculpture.mp4"> <video width="224"  src="assets/woman-running/marble_sculpture.mp4" autoplay loop controls muted /> </a> </a></th>
+            <th><a href="assets/woman-running/pixar.mp4"> <a href="assets/woman-running/pixar.mp4"> <video  width="224"  src="assets/woman-running/pixar.mp4" autoplay loop controls muted/> </a> </a></th>
+          </tr>
+          
+        </table>
+        <table  width="800" align="center">
+          <tr>
+          <tr>
+            <th style="font-size: 16px">Input</th>
+            <th style="font-family: Chalkduster">"In the forest"</th>
+            <th style="font-family: Chalkduster">"A man wearing brown trousers" </th>
+            <th style="font-family: Chalkduster">"A silver robot" </th>
+            <!-- <th style="font-size: 16px">TokenFlow (<a href="#ref-tokenflow">[3]</a>)</th> -->
+            </tr>
+            <hr>
+         
+          <tr>
+              <th><a href="assets/breakdance_2/input_fps20.mp4"> <a href="assets/breakdance_2/input_fps20.mp4"> <video  width="224"  src="assets/breakdance_2/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+              <th><a href="assets/breakdance_2/in_the_forest.mp4"> <a href="assets/breakdance_2/in_the_forest.mp4"> <video  width="224" src="assets/breakdance_2/in_the_forest.mp4" autoplay loop controls muted/> </a> </a></th>
+              <th><a href="assets/breakdance_2/brown_trousers.mp4"> <a href="assets/breakdance_2/brown_trousers.mp4"> <video width="224"  src="assets/breakdance_2/brown_trousers.mp4" autoplay loop controls muted /> </a> </a></th>
+              <th><a href="assets/breakdance_2/silver_robot.mp4"> <a href="assets/breakdance_2/silver_robot.mp4"> <video  width="224" src="assets/breakdance_2/silver_robot.mp4" autoplay loop controls muted/> </a> </a></th>
+            </tr>
+            
+          </table>
+            <table  width="800" align="center">
+              <tr>
+              <tr>
+                <th style="font-size: 16px">Input</th>
+                <th style="font-family: Chalkduster">"A car drifting on the ice"</th>
+                <!-- <th style="font-family: Chalkduster">"James bond is dancing" </th>
+                <th style="font-family: Chalkduster">"Makoto Shinkai Style" </th> -->
+                <!-- <th style="font-size: 16px">TokenFlow (<a href="#ref-tokenflow">[3]</a>)</th> -->
+                </tr>
+                <hr>
+             
+              <tr>
+                  <th><a href="assets/drift_turn/input_fps20.mp4"> <a href="assets/drift_turn/input_fps20.mp4"> <video  width="432" src="assets/drift_turn/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+                  <th><a href="assets/drift_turn/drift_on_the_ice.mp4"> <a href="assets/drift_turn/drift_on_the_ice.mp4"> <video width="432"  src="assets/drift_turn/drift_on_the_ice.mp4" autoplay loop controls muted /> </a> </a></th>
+                  <!-- <th><a href="static/project_page_v2/newrick/James.mp4"> <a href="static/project_page_v2/newrick/James.mp4"> <video  width="224" src="static/project_page_v2/newrick/James.mp4" autoplay loop controls muted/> </a> </a></th>
+                  <th><a href="static/project_page_v2/newrick/Makoto.mp4"> <a href="static/project_page_v2/newrick/Makoto.mp4"> <video  width="224"  src="static/project_page_v2/newrick/Makoto.mp4" autoplay loop controls muted/> </a> </a></th> -->
+                </tr>
+                
+              </table>
+              
+      <hr>
+
+  <h2 id="comparisons_baselines_container" align="left"><a name="image-results" id="image-results"></a>Comparisons to Baselines</h2>
+  <p align="left"> We compare video editing results among
+    <ul>
+        <!-- <li>Text-to-video-zero (<a href="#ref-txt2vid">[1]</a>) .</li>  -->
+        <li>TokenFlow (<a href="#ref-tokenflow">[1]</a>),</li> 
+        <!-- <li>Gen1 (<a href="#ref-gen1">[3]</a>).</li>  -->
+        <!-- <li>Plug-and-Play per frame (<a href="#ref-pnp">[4]</a>).</li>  -->
+        <li>TokenFlow+STEM-Inv (<a href="#ref-steminv">[2]</a>),</li>
+        <li>TokenFlow+FreeInv(Ours). </li>
+</ul>
+    <!-- Our method manages to preserve the structure of the guidance image while fulfilling the target text. </p> -->
+    <hr>
+    <table  width="800" align="center">
+      <tr>
+        <th style="font-family: Chalkduster">"Lionel Messi is talking"</th>
+        <th style="font-size: 16px">TokenFlow+Ours</th>
+        <th style="font-size: 16px">TokenFlow (<a href="#ref-TokenFlow">[1]</a>)</th>
+        <th style="font-size: 16px">TokenFlow+STEM-Inv (<a href="#ref-steminv">[2]</a>)</th>
+      </tr>
+
+
+    <tr>
+        <th><a href="assets/man_talking/input_fps20.mp4"> <a href="assets/man_talking/input_fps20.mp4"> <video  width="224" src="assets/man_talking/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+        <th><a href="assets/man_talking/Messi.mp4"> <a href="assets/man_talking/Messi.mp4"> <video  width="224" src="assets/man_talking/Messi.mp4" autoplay loop controls muted /> </a> </a></th>
+        <th><a href="assets/man_talking/messi_baseline.mp4"> <a href="assets/man_talking/messi_baseline.mp4"> <video  width="224" src="assets/man_talking/messi_baseline.mp4" autoplay loop controls muted/> </a> </a></th>
+        <th><a href="assets/man_talking/Messi_STEM-Inv.mp4"> <a href="assets/man_talking/Messi_STEM-Inv.mp4"> <video  width="224" src="assets/man_talking/Messi_STEM-Inv.mp4" autoplay loop controls muted/> </a> </a></th>
+      </tr>
+
+    </table>
+      <hr>
+
+  <table  width="800" align="center">
+        <tr>
+        <tr>
+            <th style="font-family: Chalkduster">"Pixar animation"</th>
+            <th style="font-size: 16px">TokenFlow+Ours</th>
+            <th style="font-size: 16px">TokenFlow (<a href="#ref-TokenFlow">[1]</a>)</th>
+            <th style="font-size: 16px">TokenFlow+STEM-Inv (<a href="#ref-steminv">[2]</a>)</th>
+        </tr>
+        <tr>
+            <th><a href="assets/woman-running/input_fps20.mp4"> <a href="assets/woman-running/input_fps20.mp4"> <video  width="224" src="assets/woman-running/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+            <th><a href="assets/woman-running/pixar.mp4"> <a href="assets/woman-running/pixar.mp4"> <video  width="224" src="assets/woman-running/pixar.mp4" autoplay loop controls muted/> </a> </a></th>
+            <th><a href="assets/woman-running/pixar_baseline.mp4"> <a href="assets/woman-running/pixar_baseline.mp4"> <video  width="224" src="assets/woman-running/pixar_baseline.mp4" autoplay loop controls muted /> </a> </a></th>
+            <th><a href="assets/woman-running/pixar_STEMInv.mp4"> <a href="assets/woman-running/pixar_STEMInv.mp4"> <video  width="224" src="assets/woman-running/pixar_STEMInv.mp4" autoplay loop controls muted/> </a> </a></th>
+          </tr>
+
+      </table>
+      <hr>
+        <table  width="800" align="center">
+        <tr>
+        <tr>
+          <th style="font-family: Chalkduster">"A black SUV"</th>
+          <th style="font-size: 16px">TokenFlow+Ours</th>
+          <th style="font-size: 16px">TokenFlow (<a href="#ref-TokenFlow">[1]</a>)</th>
+          <th style="font-size: 16px">TokenFlow+STEM-Inv (<a href="#ref-steminv">[2]</a>)</th>
+
+          </tr>
+
+       
+        <tr>
+            <th><a href="assets/car_turn/input_fps20.mp4"> <a href="assets/car_turn/input_fps20.mp4"> <video  width="224" src="assets/car_turn/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+            <th><a href="assets/car_turn/black_suv.mp4"> <a href="assets/car_turn/black_suv.mp4"> <video  width="224" src="assets/car_turn/black_suv.mp4" autoplay loop controls muted /> </a> </a></th>
+            <th><a href="assets/car_turn/black_suv_baseline.mp4"> <a href="assets/car_turn/black_suv_baseline.mp4"> <video  width="224" src="assets/car_turn/black_suv_baseline.mp4" autoplay loop controls muted/> </a> </a></th>
+            <th><a href="assets/car_turn/black_suv_STEMInv.mp4"> <a href="assets/car_turn/black_suv_STEMInv.mp4"> <video  width="224" src="assets/car_turn/black_suv_STEMInv.mp4" autoplay loop controls muted/> </a> </a></th>
+          </tr>
+          
+        </table>        
+        <hr>   
+
+        <h2 id="ddim_inversion_container" align="left"><a name="image-results" id="image-results"></a>Comparison to DDIM Inversion</h2>
+        <p align="left"> We make a comparison of reconstruction results between DDIM inversion and FreeInv. Additionally, we show the editing results corresponding to the two inversion methods, demonstrating that FreeInv boosts the reconstruction fidelity and further benefits editing quality.
+          <table  width="800" align="center">
+            <tr>
+            <tr>
+              <th style="font-size: 16px">Input</th>
+              <th style="font-size: 16px">DDIM reconstruction</th>
+              <th style="font-size: 16px">FreeInv reconstruction</th>
+              <th style="font-size: 16px">DDIM editing result-1</th>
+              <th style="font-size: 16px">FreeInv editing result-1</th>
+              <th style="font-size: 16px">DDIM editing result-2</th>
+              <th style="font-size: 16px">FreeInv editing result-2</th>
+              <!-- <th style="font-size: 16px">TokenFlow (<a href="#ref-tokenflow">[3]</a>)</th> -->
+              </tr>
+           
+            <tr>
+                <th><a href="assets/woman-running/input_fps20.mp4"> <a href="assets/woman-running/input_fps20.mp4"> <video  width="224" src="assets/woman-running/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+                <th><a href="assets/woman-running/inverted_baseline.mp4"> <a href="assets/woman-running/inverted_baseline.mp4"> <video width="224"  src="assets/woman-running/inverted_baseline.mp4" autoplay loop controls muted /> </a> </a></th>
+                <th><a href="assets/woman-running/inverted.mp4"> <a href="assets/woman-running/inverted.mp4"> <video  width="224" src="assets/woman-running/inverted.mp4" autoplay loop controls muted/> </a> </a></th>
+                <th><a href="assets/woman-running/pixar_baseline.mp4"> <a href="assets/woman-running/pixar_baseline.mp4"> <video  width="224"  src="assets/woman-running/pixar_baseline.mp4" autoplay loop controls muted/> </a> </a></th>
+                <th><a href="assets/woman-running/pixar.mp4"> <a href="assets/woman-running/pixar.mp4"> <video  width="224"  src="assets/woman-running/pixar.mp4" autoplay loop controls muted/> </a> </a></th>
+                <th><a href="assets/woman-running/marble_sculpture_baseline.mp4"> <a href="assets/woman-running/marble_sculpture_baseline.mp4"> <video  width="224"  src="assets/woman-running/marble_sculpture_baseline.mp4" autoplay loop controls muted/> </a> </a></th>
+                <th><a href="assets/woman-running/marble_sculpture.mp4"> <a href="assets/woman-running/marble_sculpture.mp4"> <video  width="224"  src="assets/woman-running/marble_sculpture.mp4" autoplay loop controls muted/> </a> </a></th>
+              </tr>
+            
+            </table>
+            <hr>
+            <table  width="800" align="center">
+              <tr>
+              <tr>
+                <th style="font-size: 16px">Input</th>
+                <th style="font-size: 16px">DDIM reconstruction</th>
+                <th style="font-size: 16px">FreeInv reconstruction</th>
+                <th style="font-size: 16px">DDIM editing result-1</th>
+                <th style="font-size: 16px">FreeInv editing result-1</th>
+                <th style="font-size: 16px">DDIM editing result-2</th>
+                <th style="font-size: 16px">FreeInv editing result-2</th>
+                <!-- <th style="font-size: 16px">TokenFlow (<a href="#ref-tokenflow">[3]</a>)</th> -->
+                </tr>
+             
+                <tr>
+                  <th><a href="assets/car_turn/input_fps20.mp4"> <a href="assets/car_turn/input_fps20.mp4"> <video  width="224" src="assets/car_turn/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+                  <th><a href="assets/car_turn/inverted_baseline.mp4"> <a href="assets/car_turn/inverted_baseline.mp4"> <video width="224"  src="assets/car_turn/inverted_baseline.mp4" autoplay loop controls muted /> </a> </a></th>
+                  <th><a href="assets/car_turn/inverted.mp4"> <a href="assets/car_turn/inverted.mp4"> <video  width="224" src="assets/car_turn/inverted.mp4" autoplay loop controls muted/> </a> </a></th>
+                  <th><a href="assets/car_turn/black_suv_baseline.mp4"> <a href="assets/car_turn/black_suv_baseline.mp4"> <video  width="224"  src="assets/car_turn/black_suv_baseline.mp4" autoplay loop controls muted/> </a> </a></th>
+                  <th><a href="assets/car_turn/black_suv.mp4"> <a href="assets/car_turn/black_suv.mp4"> <video  width="224"  src="assets/car_turn/black_suv.mp4" autoplay loop controls muted/> </a> </a></th>
+                  <th><a href="assets/car_turn/ice_baseline.mp4"> <a href="assets/car_turn/ice_baseline.mp4"> <video  width="224"  src="assets/car_turn/ice_baseline.mp4" autoplay loop controls muted/> </a> </a></th>
+                  <th><a href="assets/car_turn/ice.mp4"> <a href="assets/car_turn/ice.mp4"> <video  width="224"  src="assets/car_turn/ice.mp4" autoplay loop controls muted/> </a> </a></th>
+                </tr>
+                
+              </table>
+              <!-- <hr>
+              <table  width="800" align="center">
+                <tr>
+                <tr>
+                  <th style="font-size: 16px">Input</th>
+                  <th style="font-size: 16px">DDIM reconstruction</th>
+                  <th style="font-size: 16px">FreeInv reconstruction</th>
+                  <th style="font-size: 16px">DDIM editing result-1</th>
+                  <th style="font-size: 16px">FreeInv editing result-1</th>
+                  <th style="font-size: 16px">DDIM editing result-2</th>
+                  <th style="font-size: 16px">FreeInv editing result-2</th>
+                  </tr>
+               
+                <tr>
+                    <th><a href="assets/cat/input_fps20.mp4"> <a href="assets/cat/input_fps20.mp4"> <video  width="224" src="assets/cat/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+                    <th><a href="assets/cat/inverted_baseline.mp4"> <a href="assets/cat/inverted_baseline.mp4"> <video width="224"  src="assets/cat/inverted_baseline.mp4" autoplay loop controls muted /> </a> </a></th>
+                    <th><a href="assets/cat/inverted.mp4"> <a href="assets/cat/inverted.mp4"> <video  width="224" src="assets/cat/inverted.mp4" autoplay loop controls muted/> </a> </a></th>
+                    <th><a href="assets/cat/tiger_baseline.mp4"> <a href="assets/cat/tiger_baseline.mp4"> <video  width="224"  src="assets/cat/tiger_baseline.mp4" autoplay loop controls muted/> </a> </a></th>
+                    <th><a href="assets/cat/tiger.mp4"> <a href="assets/cat/tiger.mp4"> <video  width="224"  src="assets/cat/tiger.mp4" autoplay loop controls muted/> </a> </a></th>
+                  </tr>
+                  
+                </table> -->
+                <hr>
+                <table  width="800" align="center">
+                  <tr>
+                  <tr>
+                    <th style="font-size: 16px">Input</th>
+                    <th style="font-size: 16px">DDIM reconstruction</th>
+                    <th style="font-size: 16px">FreeInv reconstruction</th>
+                    <th style="font-size: 16px">DDIM editing result-1</th>
+                    <th style="font-size: 16px">FreeInv editing result-1</th>
+                    <th style="font-size: 16px">DDIM editing result-2</th>
+                    <th style="font-size: 16px">FreeInv editing result-2</th>
+                    <!-- <th style="font-size: 16px">TokenFlow (<a href="#ref-tokenflow">[3]</a>)</th> -->
+                    </tr>
+                 
+                    <tr>
+                      <th><a href="assets/man_talking/input_fps20.mp4"> <a href="assets/man_talking/input_fps20.mp4"> <video  width="224" src="assets/man_talking/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+                      <th><a href="assets/man_talking/inverted_baseline.mp4"> <a href="assets/man_talking/inverted_baseline.mp4"> <video width="224"  src="assets/man_talking/inverted_baseline.mp4" autoplay loop controls muted /> </a> </a></th>
+                      <th><a href="assets/man_talking/inverted.mp4"> <a href="assets/man_talking/inverted.mp4"> <video  width="224" src="assets/man_talking/inverted.mp4" autoplay loop controls muted/> </a> </a></th>
+                      <th><a href="assets/man_talking/messi_baseline.mp4"> <a href="assets/man_talking/James_baseline.mp4"> <video  width="224"  src="assets/man_talking/messi_baseline.mp4" autoplay loop controls muted/> </a> </a></th>
+                      <th><a href="assets/man_talking/Messi.mp4"> <a href="assets/man_talking/Messi.mp4"> <video  width="224"  src="assets/man_talking/Messi.mp4" autoplay loop controls muted/> </a> </a></th>
+                      <th><a href="assets/man_talking/James_baseline.mp4"> <a href="assets/man_talking/James_baseline.mp4"> <video  width="224"  src="assets/man_talking/James_baseline.mp4" autoplay loop controls muted/> </a> </a></th>
+                      <th><a href="assets/man_talking/James.mp4"> <a href="assets/man_talking/James.mp4"> <video  width="224"  src="assets/man_talking/James.mp4" autoplay loop controls muted/> </a> </a></th>
+                    </tr>
+                    
+                  </table>
+
+
+                <!-- <hr>
+                <table  width="800" align="center">
+                  <tr>
+                  <tr>
+                    <th style="font-size: 16px">Input</th>
+                    <th style="font-size: 16px">DDIM reconstruction</th>
+                    <th style="font-size: 16px">FreeInv reconstruction</th>
+                    <th style="font-size: 16px">DDIM editing results</th>
+                    <th style="font-size: 16px">FreeInv editing results</th> -->
+                    <!-- <th style="font-size: 16px">TokenFlow (<a href="#ref-tokenflow">[3]</a>)</th> -->
+                    <!-- </tr> -->
+                 
+                    <!-- <tr>
+                      <th><a href="assets/man_talking_2/input_fps20.mp4"> <a href="assets/man_talking_2/input_fps20.mp4"> <video  width="224" src="assets/man_talking_2/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+                      <th><a href="assets/man_talking_2/inverted_baseline.mp4"> <a href="assets/man_talking_2/inverted_baseline.mp4"> <video width="224"  src="assets/man_talking_2/inverted_baseline.mp4" autoplay loop controls muted /> </a> </a></th>
+                      <th><a href="assets/man_talking_2/inverted.mp4"> <a href="assets/man_talking_2/inverted.mp4"> <video  width="224" src="assets/man_talking_2/inverted.mp4" autoplay loop controls muted/> </a> </a></th>
+                      <th><a href="assets/man_talking_2/James_baseline.mp4"> <a href="assets/man_talking_2/James_baseline.mp4"> <video  width="224"  src="assets/man_talking_2/James_baseline.mp4" autoplay loop controls muted/> </a> </a></th>
+                      <th><a href="assets/man_talking_2/James.mp4"> <a href="assets/man_talking_2/James.mp4"> <video  width="224"  src="assets/man_talking_2/James.mp4" autoplay loop controls muted/> </a> </a></th>
+                    </tr>
+                  </table> -->
+                
+                  <hr>
+                  <table  width="1200" align="center">
+                    <tr>
+                    <tr>
+                      <th style="font-size: 16px">Input</th>
+                      <th style="font-size: 16px">DDIM reconstruction</th>
+                      <th style="font-size: 16px">FreeInv reconstruction</th>
+                      <th style="font-size: 16px">DDIM editing results</th>
+                      <th style="font-size: 16px">FreeInv editing results</th>
+                      <!-- <th style="font-size: 16px">TokenFlow (<a href="#ref-tokenflow">[3]</a>)</th> -->
+                      </tr>
+                   
+                      <tr>
+                        <th><a href="assets/tennis/input_fps20.mp4"> <a href="assets/tennis/input_fps20.mp4"> <video  width="330" src="assets/tennis/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+                        <th><a href="assets/tennis/inverted_baseline.mp4"> <a href="assets/tennis/inverted_baseline.mp4"> <video width="330"  src="assets/tennis/inverted_baseline.mp4" autoplay loop controls muted /> </a> </a></th>
+                        <th><a href="assets/tennis/inverted.mp4"> <a href="assets/tennis/inverted.mp4"> <video  width="330" src="assets/tennis/inverted.mp4" autoplay loop controls muted/> </a> </a></th>
+                        <th><a href="assets/tennis/spiderman_baseline.mp4"> <a href="assets/tennis/spiderman_baseline.mp4"> <video  width="330"  src="assets/tennis/spiderman_baseline.mp4" autoplay loop controls muted/> </a> </a></th>
+                        <th><a href="assets/tennis/spiderman.mp4"> <a href="assets/tennis/spiderman.mp4"> <video  width="330"  src="assets/tennis/spiderman.mp4" autoplay loop controls muted/> </a> </a></th>
+                      </tr>
+                      
+                    </table>
+                  
+                                        
+                                      </table>
+                                      <hr>
+
+
+
+
+
+        <tr> <td><br /></td> </tr>
+
+</table>
+<!------------------ END SECTION ------------------>
+	
+ <p><br>
+  </p>
+  <p>&nbsp;</p>
+
+
+  <h2 id="pca" align="left"><a name="image-results" id="image-results"></a>References</h2>
+
+  <p>
+    <a name="ref-tokenflow" id="ref-tokenflow"></a>
+    [1] Geyer, Michal, et al. "Tokenflow: Consistent diffusion features for consistent video editing." In ICLR, 2024.
+  </p>
+
+    <p>
+      <a name="ref-steminv" id="ref-steminv"></a>
+      [2] Maomao Li, Yu Li, Tianyu Yang, Yunfei Liu, Dongxu Yue, Zhihui Lin, and Dong Xu.
+      A video is worth 256 bases: Spatial-temporal expectation-maximization inversion for zero-shot video editing. In CVPR, pages 7528–7537, 2024.
+    </p>
+        
+</div>
+
+</body></html>

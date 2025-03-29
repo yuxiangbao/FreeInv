@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <!-- HTML Meta Tags -->
+    <title>FreeInv: Free Lunch for Improving DDIM Inversion</title>
+    <meta name="description" content="FreeInv: Free Lunch for Improving DDIM Inversion">
+
+
+    <link href="./assets/css" rel="stylesheet">
+    <link rel="stylesheet" href="./sm/style.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./assets/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./assets/css/tab_gallery.css">
+    <!-- <link rel="stylesheet" href="./assets/css/fontawesome.all.min.css"> -->
+    <link rel="stylesheet" href="./assets/css/academicons.min.css">
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/juxtapose.css">
+    <link rel="stylesheet" href="./assets/css/image_card_fader.css">
+    <link rel="stylesheet" href="./assets/css/image_card_slider.css">
+    <link rel="stylesheet" href="./assets/css/video_format.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Monoton' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Akronim' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Sofia ' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=VT323 ' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair Display ' rel='stylesheet'>
+
+</head>
+
+
+
+<body data-new-gr-c-s-check-loaded="14.1098.0" data-gr-ext-installed="">
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">FreeInv: Free Lunch for Improving DDIM Inversion</h1>
+                        <div class="column has-text-centered">
+
+                            <div class="is-size-5 publication-authors">
+                                <p>
+                                    <span class="author-block">
+                                <a href="https://github.com/yuxiangbao/">Yuxiang Bao</a><sup>1</sup>&nbsp</span>
+                                    <span class="author-block">
+                                <a href="https://openreview.net/profile?id=~Huijie_Liu2">Huijie Liu</a><sup>2</sup>&nbsp</span>
+                                    <span class="author-block">
+                                <a href="https://openreview.net/profile?id=~xun_gao2">Xun Gao</a><sup>1</sup>&nbsp</span>
+                                    <span class="author-block">
+                                <a href="https://openreview.net/profile?id=~Huan_Fu1">Huan Fu</a><sup>1</sup>&nbsp</span>
+                                    <span class="author-block">
+                                <a href="https://openreview.net/profile?id=~Guoliang_Kang1">Guoliang Kang</a><sup>2</sup>&nbsp</span>
+                                </p>
+                            </div>
+
+                            <div class="is-size-5 publication-authors">
+                                <p>
+                                    <span class="author-block">
+                            <sup>1</sup>Alibaba Group&nbsp</span>
+                                    <span class="author-block">
+                            <sup>2</sup>Beihang University&nbsp</span>
+                                </p> 
+                                <!-- <p id="fn1" style="font-size: medium;">* Equal contribution &nbsp&nbsp <sup>&infin;</sup> Correspondence
+                                    <a href="#ref2"></a>
+                                </p> -->
+                                <!-- <p id="fn1" style="font-size: large;">
+                                    CVPR 2024
+                                </p> -->
+                            </div>
+
+                            <div class="publication-links">
+                                <!-- <span class="link-block">
+                                <a href="https://arxiv.org/pdf/2312.04965.pdf" class="external-link button is-normal is-rounded is-dark">
+                                  <span class="icon">
+                                    <svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                                      <path fill="currentColor" d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z">
+                                      </path>
+                                    </svg>
+                                  </span>
+                                <span>Paper</span>
+                                </a>
+                                </span> -->
+                                <span class="link-block">
+                                <a href="" class="external-link button is-normal is-rounded is-dark">
+                                  <span class="icon">
+                                    <i class="ai ai-arxiv"></i>
+                                  </span>
+                                <span>ArXiv</span>
+                                </a>
+                                </span>
+                                <span class="link-block">
+                                <a href="" class="external-link button is-normal is-rounded is-dark">
+                                  <span class="icon">
+                                    <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg="">
+                                      <path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
+                                      </path>
+                                    </svg>
+                                  </span>
+                                <span>Code</span>
+                                </a>
+                                </span>
+                                <!-- <span class="link-block">
+                                <a href="https://huggingface.co/spaces/sled-umich/InfEdit" class="external-link button is-normal is-rounded is-dark">
+                                <span>🤗Demo</span>
+                                </a>
+                                </span> -->
+                                <!-- <span class="link-block">
+                                <a href="#bibtex" class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                  <i class="ai ai-obp"></i>
+                                </span>
+                                <span>BibTex</span>
+                                </a>
+                                </span> -->
+                                <!-- </br> -->
+                                <!-- <span class="link-block">
+                                <a href="https://github.com/sled-group/InfEdit/tree/website" class="external-link button is-normal is-rounded is-dark">
+                                    <span>User Handbook (Under Construction)</span>
+                                </a>
+                                </span> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="has-text-centered">
+                    <img src="./image_assets/infedit_gif.gif" width="100%">
+                </div> -->
+
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Paper abstract -->
+    <section class="section hero is-light">
+        <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+                <p>
+                Naive DDIM inversion process usually suffers from a trajectory deviation issue, i.e., the latent trajectory during reconstruction deviates from the one during inversion. 
+                To alleviate this issue, previous methods either learn to mitigate the deviation or design cumbersome compensation strategy to reduce the mismatch error, exhibiting substantial time and computation cost. 
+                In this work, we present a nearly free-lunch method (named FreeInv) to address the issue more effectively and efficiently. 
+                In FreeInv, we randomly transform the latent representation and keep the transformation the same between the corresponding inversion and reconstruction time-step. 
+                It is motivated from a statistical perspective that an ensemble of DDIM inversion processes for multiple trajectories yields a smaller trajectory mismatch error on expectation. 
+                Moreover, through theoretical analysis and empirical study, we show that FreeInv performs an efficient ensemble of multiple trajectories. 
+                FreeInv can be freely integrated into existing inversion-based image and video editing techniques. 
+                Especially for inverting video sequences, it brings more significant fidelity and efficiency improvements. 
+                Comprehensive quantitative and qualitative evaluation on PIE benchmark and DAVIS dataset shows that FreeInv remarkably outperforms conventional DDIM inversion, and is competitive among previous state-of-the-art inversion methods, with superior computation efficiency.
+                </p>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- End paper abstract -->
+
+
+    <section class="section">
+
+        <!--/ Matting. -->
+        <div class="container is-max-desktop">
+
+            <h2 class="title is-3 has-text-centered">Experiments</h2>
+            <!-- color -->
+            <div class="columns is-centered">
+                
+                <div class="column is-full-width">
+                    <div class="content has-text-justified">
+                        <h3>
+                            Image-Editing Results.
+                        </h3>
+                        <h4>
+                            Comparison with state-of-the-art inversion methods.
+                        </h4>
+                        <p>
+                            We conduct a comparison with state-of-the-art inversion-enhancing techniques, covering
+                            <ul>
+                                <li>Null-Text Inversion (NTI) <a href="#ref-NTI">[1]</a> </li>
+                                <li>EDICT <a href="#ref-EDICT">[2]</a> </li>
+                                <li>DDPM Inversion (DI) <a href="#ref-DI">[3]</a> </li>
+                                <li>Virtual Inversion (VI) <a href="#ref-VI">[4]</a> </li>
+                                <li>BELM <a href="#ref-BELM">[5]</a> </li>
+                                <li>PnP Inversion (PI) <a href="#ref-PI">[6]</a> </li>
+                            </ul>
+                            We adopt P2P <a href="#ref-P2P">[7]</a> as the baseline editing framework, and all the inversion approaches are integrated into it.
+                            The results show that FreeInv is competitive among the state-of-the-art inversion methods, with superior computation efficiency.
+                        </p>
+                    </div>
+                    <div class="content has-text-centered">
+                        <img src="./image_assets/supp_inversion_comp.png" width="150%">
+                    </div>
+                    <div class="content has-text-justified">
+                        <h4>
+                            Plugging in PnP and MasaCtrl.
+                        </h4>
+                        <p>
+                            Thanks to operational simplicity, FreeInv can be readily plugged into existing inversion-based image editing frameworks. 
+                            Besides P2P, we compare the image editing results of PnP <a href="#ref-PnP">[8]</a>  and MasaCtrl <a href="#ref-MasaCtrl">[9]</a>  with and without FreeInv.
+                        </p>
+                    </div>
+                    <div class="content has-text-centered">
+                        <img src="./image_assets/supp_pnp_comp.png" width="150%">
+                    </div>
+                    <div class="content has-text-centered">
+                        <img src="./image_assets/supp_masactrl_comp.png" width="150%">
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <div class="content has-text-justified">
+                        <h3>
+                            Video-Editing Results.
+                        </h3>
+                        <h4>
+                            Our results.
+                        </h4>
+                        <p>
+                            We integrate FreeInv into a representative inversion-based video editing method, TokenFlow <a href="#ref-tokenflow">[10]</a>. The video editing results are presented as follow.
+                        </p>
+                    </div>
+                    <div class="content has-text-centered">
+                        <table width="800" align="center">
+                            <tr>
+                                <th style="font-size: 16px">Input</th>
+                                <th style="font-family: Chalkduster">"Lionel Messi"</th>
+                                <th style="font-family: Chalkduster">"LeBron James"</th>
+                                <th style="font-family: Chalkduster">"Will Smith"</th>
+                            </tr>
+                            <hr>
+                            <tr>
+                                <th><a href="sm/assets/man_talking/input_fps20.mp4"><video width="200" height="200" src="sm/assets/man_talking/input_fps20.mp4" autoplay loop controls muted /></a></th>
+                                <th><a href="sm/assets/man_talking/Messi.mp4"><video width="200" height="200" src="sm/assets/man_talking/Messi.mp4" autoplay loop controls muted /></a></th>
+                                <th><a href="sm/assets/man_talking/James.mp4"><video width="200" height="200" src="sm/assets/man_talking/James.mp4" autoplay loop controls muted /></a></th>
+                                <th><a href="sm/assets/man_talking/Will_Smith.mp4"><video width="200" height="200" src="sm/assets/man_talking/Will_Smith.mp4" autoplay loop controls muted /></a></th>
+                            </tr>
+                        </table>
+                        <table width="800" align="center">
+                            <tr>
+                                <th style="font-size: 16px">Input</th>
+                                <th style="font-family: Chalkduster">"Pixar Animation"</th>
+                                <th style="font-family: Chalkduster">"A Tiger"</th>
+                                <th style="font-family: Chalkduster">"An Orange Cat"</th>
+                            </tr>
+                            <hr>
+                            <tr>
+                                <th><a href="sm/assets/cat/input_fps20.mp4"><video width="200" height="200" src="sm/assets/cat/input_fps20.mp4" autoplay loop controls muted /></a></th>
+                                <th><a href="sm/assets/cat/pixar.mp4"><video width="200" height="200" src="sm/assets/cat/pixar.mp4" autoplay loop controls muted /></a></th>
+                                <th><a href="sm/assets/cat/tiger.mp4"><video width="200" height="200" src="sm/assets/cat/tiger.mp4" autoplay loop controls muted /></a></th>
+                                <th><a href="sm/assets/cat/orange_cat.mp4"><video width="200" height="200" src="sm/assets/cat/orange_cat.mp4" autoplay loop controls muted /></a></th>
+                            </tr>
+                        </table>
+                        <table width="800" align="center">
+                            <tr>
+                                <th style="font-size: 16px">Input</th>
+                                <th style="font-family: Chalkduster">"8-bit pixel art"</th>
+                                <th style="font-family: Chalkduster">"A marble sculpture"</th>
+                                <th style="font-family: Chalkduster">"Pixar animation"</th>
+                            </tr>
+                            <hr>
+                            <tr>
+                                <th><a href="sm/assets/woman-running/input_fps20.mp4"><video width="200" height="200" src="sm/assets/woman-running/input_fps20.mp4" autoplay loop controls muted /></a></th>
+                                <th><a href="sm/assets/woman-running/8-bit.mp4"><video width="200" height="200" src="sm/assets/woman-running/8-bit.mp4" autoplay loop controls muted /></a></th>
+                                <th><a href="sm/assets/woman-running/marble_sculpture.mp4"><video width="200" height="200" src="sm/assets/woman-running/marble_sculpture.mp4" autoplay loop controls muted /></a></th>
+                                <th><a href="sm/assets/woman-running/pixar.mp4"><video width="200" height="200" src="sm/assets/woman-running/pixar.mp4" autoplay loop controls muted /></a></th>
+                            </tr>
+                        </table>
+                        <table width="800" align="center">
+                            <tr>
+                                <th style="font-size: 16px">Input</th>
+                                <th style="font-family: Chalkduster">"In the forest"</th>
+                                <th style="font-family: Chalkduster">"Brown trousers"</th>
+                                <th style="font-family: Chalkduster">"A silver robot"</th>
+                            </tr>
+                            <hr>
+                            <tr>
+                                <th><a href="sm/assets/breakdance_2/input_fps20.mp4"><video width="200" height="200" src="sm/assets/breakdance_2/input_fps20.mp4" autoplay loop controls muted /></a></th>
+                                <th><a href="sm/assets/breakdance_2/in_the_forest.mp4"><video width="200" height="200" src="sm/assets/breakdance_2/in_the_forest.mp4" autoplay loop controls muted /></a></th>
+                                <th><a href="sm/assets/breakdance_2/brown_trousers.mp4"><video width="200" height="200" src="sm/assets/breakdance_2/brown_trousers.mp4" autoplay loop controls muted /></a></th>
+                                <th><a href="sm/assets/breakdance_2/silver_robot.mp4"><video width="200" height="200" src="sm/assets/breakdance_2/silver_robot.mp4" autoplay loop controls muted /></a></th>
+                            </tr>
+                        </table>
+                        <table  width="800" align="center">
+                            <tr>
+                            <th style="font-size: 16px">Input</th>
+                            <th style="font-family: Chalkduster">"A car drifting on the ice"</th>
+                            </tr>
+                            <hr>
+                            <tr>
+                                <th><a href="sm/assets/drift_turn/input_fps20.mp4"> <a href="sm/assets/drift_turn/input_fps20.mp4"> <video  width="432" src="sm/assets/drift_turn/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+                                <th><a href="sm/assets/drift_turn/drift_on_the_ice.mp4"> <a href="sm/assets/drift_turn/drift_on_the_ice.mp4"> <video width="432"  src="sm/assets/drift_turn/drift_on_the_ice.mp4" autoplay loop controls muted /> </a> </a></th>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="content has-text-justified">
+                        <h4>
+                            Comparisons to baselines.
+                        </h4>
+                        <p>
+                            We compare video editing results among
+                            <ul>
+                                <li>TokenFlow (<a href="#ref-tokenflow">[10]</a>),</li> 
+                                <li>TokenFlow+STEM-Inv (<a href="#ref-steminv">[11]</a>),</li>
+                                <li>TokenFlow+FreeInv(Ours). </li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="content has-text-centered">
+                        <table  width="800" align="center">
+                            <tr>
+                              <th style="font-family: Chalkduster">"Lionel Messi"</th>
+                              <th style="font-size: 16px">Ours</th>
+                              <th style="font-size: 16px">TokenFlow (<a href="#ref-TokenFlow">[10]</a>)</th>
+                              <th style="font-size: 16px">STEM-Inv (<a href="#ref-steminv">[11]</a>)</th>
+                            </tr>
+                            <tr>
+                                <th><a href="sm/assets/man_talking/input_fps20.mp4"><video width="200" height="200" src="sm/assets/man_talking/input_fps20.mp4" autoplay loop controls muted /></a></th>
+                                <th><a href="sm/assets/man_talking/Messi.mp4"><video width="200" height="200" src="sm/assets/man_talking/Messi.mp4" autoplay loop controls muted /></a></th>
+                                <th><a href="sm/assets/man_talking/messi_baseline.mp4"><video width="200" height="200" src="sm/assets/man_talking/messi_baseline.mp4" autoplay loop controls muted /></a></th>
+                                <th><a href="sm/assets/man_talking/Messi_STEM-Inv.mp4"><video width="200" height="200" src="sm/assets/man_talking/Messi_STEM-Inv.mp4" autoplay loop controls muted /></a></th>
+                            </tr>
+                        </table>
+                        <hr>
+                      
+                        <table  width="800" align="center">
+                              <tr>
+                              <tr>
+                                  <th style="font-family: Chalkduster">"Pixar animation"</th>
+                                  <th style="font-size: 16px">Ours</th>
+                                  <th style="font-size: 16px">TokenFlow (<a href="#ref-TokenFlow">[10]</a>)</th>
+                                  <th style="font-size: 16px">STEM-Inv (<a href="#ref-steminv">[11]</a>)</th>
+                              </tr>
+                              <tr>
+                                  <th><a href="sm/assets/woman-running/input_fps20.mp4"> <a href="sm/assets/woman-running/input_fps20.mp4"> <video  width="200" height="200" src="sm/assets/woman-running/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+                                  <th><a href="sm/assets/woman-running/pixar.mp4"> <a href="sm/assets/woman-running/pixar.mp4"> <video  width="200" height="200" src="sm/assets/woman-running/pixar.mp4" autoplay loop controls muted/> </a> </a></th>
+                                  <th><a href="sm/assets/woman-running/pixar_baseline.mp4"> <a href="sm/assets/woman-running/pixar_baseline.mp4"> <video  width="200" height="200" src="sm/assets/woman-running/pixar_baseline.mp4" autoplay loop controls muted /> </a> </a></th>
+                                  <th><a href="sm/assets/woman-running/pixar_STEMInv.mp4"> <a href="sm/assets/woman-running/pixar_STEMInv.mp4"> <video  width="200" height="200" src="sm/assets/woman-running/pixar_STEMInv.mp4" autoplay loop controls muted/> </a> </a></th>
+                                </tr>
+                      
+                            </table>
+                            <hr>
+                              <table  width="800" align="center">
+                              <tr>
+                              <tr>
+                                <th style="font-family: Chalkduster">"A black SUV"</th>
+                                <th style="font-size: 16px">Ours</th>
+                                <th style="font-size: 16px">TokenFlow (<a href="#ref-TokenFlow">[10]</a>)</th>
+                                <th style="font-size: 16px">STEM-Inv (<a href="#ref-steminv">[11]</a>)</th>
+                              </tr>
+                              <tr>
+                                  <th><a href="sm/assets/car_turn/input_fps20.mp4"> <a href="sm/assets/car_turn/input_fps20.mp4"> <video width="200" height="200" src="sm/assets/car_turn/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+                                  <th><a href="sm/assets/car_turn/black_suv.mp4"> <a href="sm/assets/car_turn/black_suv.mp4"> <video width="200" height="200" src="sm/assets/car_turn/black_suv.mp4" autoplay loop controls muted /> </a> </a></th>
+                                  <th><a href="sm/assets/car_turn/black_suv_baseline.mp4"> <a href="sm/assets/car_turn/black_suv_baseline.mp4"> <video width="200" height="200" src="sm/assets/car_turn/black_suv_baseline.mp4" autoplay loop controls muted/> </a> </a></th>
+                                  <th><a href="sm/assets/car_turn/black_suv_STEMInv.mp4"> <a href="sm/assets/car_turn/black_suv_STEMInv.mp4"> <video width="200" height="200" src="sm/assets/car_turn/black_suv_STEMInv.mp4" autoplay loop controls muted/> </a> </a></th>
+                              </tr>
+                                
+                              </table>    
+
+                    </div>
+
+                    <div class="content has-text-justified">
+                        <h4>
+                            Comparison to DDIM Inversion.
+                        </h4>
+                        <p>
+                            We make a comparison of reconstruction results between DDIM inversion and FreeInv. Additionally, we show the editing results with the inverted latent, denoted as DDIM editing and FreeInv editing, respectively. The visualization demonstrates that FreeInv boosts the reconstruction fidelity and further benefits editing quality.
+                        </p>
+                    </div>
+                    <div class="content has-text-centered">
+                        <table  width="800" align="center">
+                            <tr>
+                            <tr>
+                              <th style="font-size: 14px">Input</th>
+                              <th style="font-size: 14px">DDIM recon.</th>
+                              <th style="font-size: 14px">FreeInv recon.</th>
+                              <th style="font-size: 14px">DDIM editing</th>
+                              <th style="font-size: 14px">FreeInv editing</th>
+                              <!-- <th style="font-size: 8px">DDIM editing-2</th>
+                              <th style="font-size: 8px">FreeInv editing-2</th> -->
+                              <!-- <th style="font-size: 16px">TokenFlow (<a href="#ref-tokenflow">[3]</a>)</th> -->
+                            </tr>
+                            <tr>
+                                <th><a href="sm/assets/woman-running/input_fps20.mp4"> <a href="sm/assets/woman-running/input_fps20.mp4"> <video width="200" height="200" src="sm/assets/woman-running/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+                                <th><a href="sm/assets/woman-running/inverted_baseline.mp4"> <a href="sm/assets/woman-running/inverted_baseline.mp4"> <video width="200" height="200" src="sm/assets/woman-running/inverted_baseline.mp4" autoplay loop controls muted /> </a> </a></th>
+                                <th><a href="sm/assets/woman-running/inverted.mp4"> <a href="sm/assets/woman-running/inverted.mp4"> <video width="200" height="200" src="sm/assets/woman-running/inverted.mp4" autoplay loop controls muted/> </a> </a></th>
+                                <th><a href="sm/assets/woman-running/pixar_baseline.mp4"> <a href="sm/assets/woman-running/pixar_baseline.mp4"> <video width="200" height="200"  src="sm/assets/woman-running/pixar_baseline.mp4" autoplay loop controls muted/> </a> </a></th>
+                                <th><a href="sm/assets/woman-running/pixar.mp4"> <a href="sm/assets/woman-running/pixar.mp4"> <video width="200" height="200"  src="sm/assets/woman-running/pixar.mp4" autoplay loop controls muted/> </a> </a></th>
+                                <!-- <th><a href="sm/assets/woman-running/marble_sculpture_baseline.mp4"> <a href="sm/assets/woman-running/marble_sculpture_baseline.mp4"> <video width="200" height="200"  src="sm/assets/woman-running/marble_sculpture_baseline.mp4" autoplay loop controls muted/> </a> </a></th>
+                                <th><a href="sm/assets/woman-running/marble_sculpture.mp4"> <a href="sm/assets/woman-running/marble_sculpture.mp4"> <video width="200" height="200"  src="sm/assets/woman-running/marble_sculpture.mp4" autoplay loop controls muted/> </a> </a></th> -->
+                            </tr>
+                            
+                            </table>
+                            <hr>
+                            <table  width="800" align="center">
+                              <tr>
+                              <tr>
+                                <th style="font-size: 14px">Input</th>
+                                <th style="font-size: 14px">DDIM recon.</th>
+                                <th style="font-size: 14px">FreeInv recon.</th>
+                                <th style="font-size: 14px">DDIM editing</th>
+                                <th style="font-size: 14px">FreeInv editing</th>
+                                <!-- <th style="font-size: 16px">TokenFlow (<a href="#ref-tokenflow">[3]</a>)</th> -->
+                              </tr>
+                              <tr>
+                                <th><a href="sm/assets/car_turn/input_fps20.mp4"> <a href="sm/assets/car_turn/input_fps20.mp4"> <video  width="200" height="200" src="sm/assets/car_turn/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+                                <th><a href="sm/assets/car_turn/inverted_baseline.mp4"> <a href="sm/assets/car_turn/inverted_baseline.mp4"> <video width="200" height="200" src="sm/assets/car_turn/inverted_baseline.mp4" autoplay loop controls muted /> </a> </a></th>
+                                <th><a href="sm/assets/car_turn/inverted.mp4"> <a href="sm/assets/car_turn/inverted.mp4"> <video width="200" height="200" src="sm/assets/car_turn/inverted.mp4" autoplay loop controls muted/> </a> </a></th>
+                                <th><a href="sm/assets/car_turn/black_suv_baseline.mp4"> <a href="sm/assets/car_turn/black_suv_baseline.mp4"> <video width="200" height="200"  src="sm/assets/car_turn/black_suv_baseline.mp4" autoplay loop controls muted/> </a> </a></th>
+                                <th><a href="sm/assets/car_turn/black_suv.mp4"> <a href="sm/assets/car_turn/black_suv.mp4"> <video width="200" height="200" src="sm/assets/car_turn/black_suv.mp4" autoplay loop controls muted/> </a> </a></th>
+                                <!-- <th><a href="sm/assets/car_turn/ice_baseline.mp4"> <a href="sm/assets/car_turn/ice_baseline.mp4"> <video  width="224"  src="sm/assets/car_turn/ice_baseline.mp4" autoplay loop controls muted/> </a> </a></th>
+                                <th><a href="sm/assets/car_turn/ice.mp4"> <a href="sm/assets/car_turn/ice.mp4"> <video  width="224"  src="sm/assets/car_turn/ice.mp4" autoplay loop controls muted/> </a> </a></th> -->
+                              </tr>
+                                
+                            </table>
+                            <hr>
+                            <table  width="800" align="center">
+                                <tr>
+                                <tr>
+                                    <th style="font-size: 14px">Input</th>
+                                    <th style="font-size: 14px">DDIM recon.</th>
+                                    <th style="font-size: 14px">FreeInv recon.</th>
+                                    <th style="font-size: 14px">DDIM editing</th>
+                                    <th style="font-size: 14px">FreeInv editing</th>
+                                </tr>
+                               
+                                <tr>
+                                    <th><a href="sm/assets/man_talking/input_fps20.mp4"> <a href="sm/assets/man_talking/input_fps20.mp4"> <video  width="224" src="sm/assets/man_talking/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+                                    <th><a href="sm/assets/man_talking/inverted_baseline.mp4"> <a href="sm/assets/man_talking/inverted_baseline.mp4"> <video width="224"  src="sm/assets/man_talking/inverted_baseline.mp4" autoplay loop controls muted /> </a> </a></th>
+                                    <th><a href="sm/assets/man_talking/inverted.mp4"> <a href="sm/assets/man_talking/inverted.mp4"> <video  width="224" src="sm/assets/man_talking/inverted.mp4" autoplay loop controls muted/> </a> </a></th>
+                                    <!-- <th><a href="sm/assets/man_talking/messi_baseline.mp4"> <a href="sm/assets/man_talking/James_baseline.mp4"> <video  width="224"  src="sm/assets/man_talking/messi_baseline.mp4" autoplay loop controls muted/> </a> </a></th>
+                                    <th><a href="sm/assets/man_talking/Messi.mp4"> <a href="sm/assets/man_talking/Messi.mp4"> <video  width="224"  src="sm/assets/man_talking/Messi.mp4" autoplay loop controls muted/> </a> </a></th> -->
+                                    <th><a href="sm/assets/man_talking/James_baseline.mp4"> <a href="sm/assets/man_talking/James_baseline.mp4"> <video  width="224"  src="sm/assets/man_talking/James_baseline.mp4" autoplay loop controls muted/> </a> </a></th>
+                                    <th><a href="sm/assets/man_talking/James.mp4"> <a href="sm/assets/man_talking/James.mp4"> <video  width="224"  src="sm/assets/man_talking/James.mp4" autoplay loop controls muted/> </a> </a></th>
+                                </tr>
+                            </table>
+                            <hr>
+                            <table  width="1200" align="center">
+                                    <tr>
+                                    <tr>
+                                    <th style="font-size: 14px">Input</th>
+                                    <th style="font-size: 14px">DDIM recon.</th>
+                                    <th style="font-size: 14px">FreeInv recon.</th>
+                                    <th style="font-size: 14px">DDIM editing</th>
+                                    <th style="font-size: 14px">FreeInv editing</th>
+                                    <!-- <th style="font-size: 16px">TokenFlow (<a href="#ref-tokenflow">[3]</a>)</th> -->
+                                    </tr>
+                                
+                                    <tr>
+                                        <th><a href="sm/assets/tennis/input_fps20.mp4"> <a href="sm/assets/tennis/input_fps20.mp4"> <video  width="330" src="sm/assets/tennis/input_fps20.mp4" autoplay loop controls muted/> </a> </a></th>
+                                        <th><a href="sm/assets/tennis/inverted_baseline.mp4"> <a href="sm/assets/tennis/inverted_baseline.mp4"> <video width="330"  src="sm/assets/tennis/inverted_baseline.mp4" autoplay loop controls muted /> </a> </a></th>
+                                        <th><a href="sm/assets/tennis/inverted.mp4"> <a href="sm/assets/tennis/inverted.mp4"> <video  width="330" src="sm/assets/tennis/inverted.mp4" autoplay loop controls muted/> </a> </a></th>
+                                        <th><a href="sm/assets/tennis/spiderman_baseline.mp4"> <a href="sm/assets/tennis/spiderman_baseline.mp4"> <video  width="330"  src="sm/assets/tennis/spiderman_baseline.mp4" autoplay loop controls muted/> </a> </a></th>
+                                        <th><a href="sm/assets/tennis/spiderman.mp4"> <a href="sm/assets/tennis/spiderman.mp4"> <video  width="330"  src="sm/assets/tennis/spiderman.mp4" autoplay loop controls muted/> </a> </a></th>
+                                    </tr>
+                                    
+                                    </table>
+
+                    </div>
+
+                </div>
+            </div>
+    
+    <div class="content has-text-justified">
+        <h2>References</h2>
+        <p>
+            <a name="ref-NTI" id="ref-NTI"></a>
+            [1] Ron Mokady, et al. "Null-text inversion for editing real images using guided diffusion models." In CVPR, 2023.
+        </p>
+        <p>
+            <a name="ref-EDICT" id="ref-EDICT"></a>
+            [2] Bram Wallace, et al. "Edict: Exact diffusion inversion via coupled transformations." In CVPR, 2023.
+        </p>
+        <p>
+            <a name="ref-DI" id="ref-DI"></a>
+            [3] Inbar Huberman-Spiegelglas, et al. "An edit friendly ddpm noise space: Inversion and manipulations." In CVPR, 2024.
+        </p>
+        <p>
+            <a name="ref-VI" id="ref-VI"></a>
+            [4] Sihan Xu, et al. "Inversion-free image editing with natural language." In CVPR, 2024.
+        </p>
+        <p>
+            <a name="ref-BELM" id="ref-BELM"></a>
+            [5] Fangyikang Wang, et al. "BELM: Bidirectional Explicit Linear Multi-step Sampler for Exact Inversion in Diffusion Models." In NeurIPS, 2024.
+        </p>
+        <p>
+            <a name="ref-PI" id="ref-PI"></a>
+            [6] Xuan Ju, et al. "Pnp inversion: Boosting diffusion-based editing with 3 lines of code." In ICLR, 2024.
+        </p>
+        <p>
+            <a name="ref-P2P" id="ref-P2P"></a>
+            [7] Amir Hertz, et al. "Prompt-to-prompt image editing with cross attention control." In ICLR, 2023.
+        </p>
+        <p>
+            <a name="ref-PnP" id="ref-PnP"></a>
+            [8] Narek Tumanyan, et al. "Plug-and-play diffusion features for text-driven image-to-image translation." In CVPR, 2023.
+        </p>
+        <p>
+            <a name="ref-MasaCtrl" id="ref-MasaCtrl"></a>
+            [9] Mingdeng Cao, et al. "Masactrl: Tuning-free mutual self-attention control for consistent image synthesis and editing." In ICCV, 2023.
+        </p>
+        <p>
+            <a name="ref-tokenflow" id="ref-tokenflow"></a>
+            [10] Geyer, Michal, et al. "Tokenflow: Consistent diffusion features for consistent video editing." In ICLR, 2024.
+        </p>
+        <p>
+            <a name="ref-steminv" id="ref-steminv"></a>
+            [11] Maomao Li, et al. "A video is worth 256 bases: Spatial-temporal expectation-maximization inversion for zero-shot video editing." In CVPR, 2024.
+        </p>
+    </div>
+    <footer class="footer">
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content">
+                    <p>
+                        This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+                    </p>
+                    <p>
+                        Website adapted from the following <a href="https://github.com/nerfies/nerfies.github.io">source code</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <script type="text/javascript">
+        var currentMethodList = ['ours', 'plain', 'full', 'aae', 'ip2p', 'p2p'];
+        var currentMethod = "ours";
+
+        function ChangeMethod(idx) {
+            var li_list = document.getElementById("method-view-ul").children;
+            for (i = 0; i < li_list.length; i++) {
+                li_list[i].className = "nav-link";
+            }
+            li_list[idx].className = "nav-link active";
+            currentMethod = currentMethodList[idx];
+
+            var image_livingroom = document.getElementById('image_livingroom');
+            var image_cityscape = document.getElementById('image_cityscape');
+            image_livingroom.src = "./image_assets/footnote/livingroom/livingroom_" + currentMethod + ".jpg";
+            image_cityscape.src = "./image_assets/footnote/cityscape/cityscape_" + currentMethod + ".jpg";
+        }
+
+        function ChangePrompt(idx) {
+            var li_list = document.getElementById("prompt-view-ul").children;
+            for (i = 0; i < li_list.length; i++) {
+                li_list[i].className = "nav-link";
+            }
+            li_list[idx].className = "nav-link active";
+            var div_livingroom = document.getElementById('div_livingroom');
+            var div_cityscape = document.getElementById('div_cityscape');
+            if (idx == 0) {
+                div_livingroom.style.display = "";
+                div_cityscape.style.display = "none";
+            } else {
+                div_livingroom.style.display = "none";
+                div_cityscape.style.display = "";
+            }
+        }
+    </script>
+
+    <script src="./assets/js/juxtapose.js"></script>
+    <script src="./assets/js/popper.min.js"></script>
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script defer="" src="./assets/js/fontawesome.all.min.js"></script>
+    <script src="./assets/js/bulma-carousel.min.js"></script>
+    <script src="./assets/js/bulma-slider.min.js"></script>
+    <script src="./assets/js/magnifier.js"></script>
+
+</body>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+</html>
