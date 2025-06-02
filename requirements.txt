@@ -1,0 +1,10 @@
+pillow
+diffusers==0.14
+ftfy
+transformers==4.35
+opencv-python 
+tqdm
+numpy==1.26
+pyyaml
+accelerate==0.22
+av==11.0
