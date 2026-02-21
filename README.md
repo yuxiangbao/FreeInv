@@ -27,6 +27,7 @@ python ddim_inversion.py
 ```shell
 python ddim_inversion.py --freeinv
 ```
+Additional plug-and-play comparison examples, built upon the PnPInversion codebase, are available in the `FreeInv_image/` folder.
 
 ## ⭐ Cite
 
